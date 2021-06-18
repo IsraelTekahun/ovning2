@@ -5,74 +5,72 @@ namespace övn2
 {
     class Program
     {
+
+        private static int calculateSinglePrice(int age)
+        {
+            int price = 0;
+
+            Console.WriteLine();
+
+            if (age < 5 || age > 100)
+            {
+                Console.WriteLine("Free enterance");
+            }
+            else if (age < 20)
+            {
+                Console.WriteLine("Youth price: 80kr");
+                price = 80;
+            }
+            else if (age > 64)
+            {
+                Console.WriteLine("pensioner price: 90kr");
+                price = 90;
+            }
+            else
+            {
+                Console.WriteLine("Standard price: 120kr");
+                price = 120;
+            }
+
+            return price;
+        }
+
         private static void showMenu()
         {
             Console.WriteLine();
             Console.WriteLine("Enter 0 to quit");
             Console.WriteLine("Enter 1 get price");
             Console.WriteLine("Eneter 2 family");
-            Console.WriteLine();
+            Console.WriteLine("-----------");
+            Console.Write("choice: ");
         }
-            private static String getPrice()
+        private static String getPrice()
         {
             int age;
-            Console.WriteLine("How many people?");
+
+            Console.WriteLine();
+
+            Console.Write("How many people? ");
             int people = int.Parse(Console.ReadLine());
             int counter = 0;
             int totalPrice = 0;
 
-            //gör det i en funktion
-            if (people == 1)
+            
+            for (int i = 1; i <= people; i++)
             {
-
-                Console.WriteLine("Age ?");
+                Console.WriteLine();
+                Console.Write($"Enter age for guest {i}: ");
                 age = int.Parse(Console.ReadLine());
 
-                if (age < 5 || age > 100)
-                {
-                    Console.WriteLine("Free enterance");
-                }
-                else if (age < 20)
-                {
-                    Console.WriteLine("Youth price: 80kr");
-                }
-                else if (age > 64)
-                {
-                    Console.WriteLine("Youth price: 90kr");
-                }
-                else
-                {
-                    Console.WriteLine("Youth price: 120kr");
-                }
+                totalPrice += calculateSinglePrice(age);
 
-            }
-            else if (people > 1)
-            {
-                for (int i = 1; i <= people; i++)
-                {
-                    Console.WriteLine($"Enter age for guest {i}");
-                    age = int.Parse(Console.ReadLine());
+                counter++;
 
-                    if (age < 20)
-                    {
-                        totalPrice += 80;
-                    }
-                    else if (age > 64)
-                    {
-                        totalPrice += 90;
-                    }
-                    else
-                    {
-                        totalPrice += 120;
-                    }
-                    counter++;
-                }
-                Console.WriteLine($"{counter} people: {totalPrice}kr");
-
-            }
-            else
-            {
-                // 0 or less given
+                Console.WriteLine();
+                Console.WriteLine("----------------");
+                Console.WriteLine($"{counter} guest(s): {totalPrice}kr");
+                Console.WriteLine("----------------");
+                Console.WriteLine();
             }
 
             return "  ";
@@ -93,11 +91,7 @@ namespace övn2
                         done = true;
                         break;
                     case "1":
-
-
-                        Console.WriteLine(getPrice());
-
-
+                        getPrice();
                         break;
                     case "2":
                         Console.WriteLine("Give a random text");
