@@ -5,12 +5,6 @@ namespace övn2
 {
     class Program
     {
-        private static bool isInteger(String input)
-        {
-            return int.TryParse(input, out int n);
-        }
-
-
         private static void showMenu()
         {
             Console.WriteLine("\nEnter 0 to quit");
@@ -20,6 +14,8 @@ namespace övn2
             Console.WriteLine("-----------");
             Console.Write("choice: ");
         }
+
+        /*calculates a ticket price and show price information for a single guest in a cinema based on given age*/
         private static int calculateSinglePrice(int age)
         {
             int price = 0;
@@ -46,6 +42,8 @@ namespace övn2
 
             return price;
         }
+
+        /*Method that gets cinema price for one or more people*/
         private static void getPrice()
         {
             int age;
@@ -75,7 +73,7 @@ namespace övn2
             }
         }
 
-
+        /*A method that repeats a given text ten times separated by comma*/
         private static void repeatText()
         {
             String input;
@@ -92,6 +90,7 @@ namespace övn2
             Console.WriteLine();
         }
 
+        /*A method that extracts the third word in a given sentence*/
         private static void splitSentence()
         {
 
@@ -100,6 +99,7 @@ namespace övn2
             Console.Write("\nGive a sentence with three or more words: ");
             input = Console.ReadLine();
 
+            //split a sentece based on whitespaces
             words = Regex.Split(input, "\\s+");
 
             while (words.Length < 3)
